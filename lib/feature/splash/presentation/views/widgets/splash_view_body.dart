@@ -1,4 +1,7 @@
+import 'package:bookly/core/constant/constants.dart';
+import 'package:bookly/feature/splash/presentation/home/presentation/view/home_view.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../../core/utils/assets.dart';
 import 'sliding_text.dart';
@@ -18,13 +21,14 @@ class _SplashViewBodyState extends State<SplashViewBody>
   @override
   void initState() {
     super.initState();
-    animationController =
-        AnimationController(vsync: this, duration: const Duration(minutes: 1));
-    slidingAmimation =
-        Tween<Offset>(begin: const Offset(0, 2), end: Offset.zero)
-            .animate(animationController);
-    slidingAmimation.addListener(() {
-      setState(() {});
+    initSlidingAnimation();
+    navigateToHome();
+  }
+
+  void navigateToHome() {
+    Future.delayed(const Duration(seconds: 2), () {
+      Get.to(() => const HomeView(),
+          transition: Transition.fadeIn, duration: kTranstionDuration);
     });
   }
 
@@ -44,5 +48,16 @@ class _SplashViewBodyState extends State<SplashViewBody>
         SlidingText(slidingAmimation: slidingAmimation),
       ],
     );
+  }
+
+  void initSlidingAnimation() {
+    animationController =
+        AnimationController(vsync: this, duration: const Duration(minutes: 1));
+    slidingAmimation =
+        Tween<Offset>(begin: const Offset(0, 2), end: Offset.zero)
+            .animate(animationController);
+    slidingAmimation.addListener(() {
+      setState(() {});
+    });
   }
 }

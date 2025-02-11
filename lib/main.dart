@@ -1,4 +1,4 @@
-import 'package:bookly/core/constant/color_cost.dart';
+import 'package:bookly/core/constant/constants.dart';
 import 'package:bookly/feature/splash/presentation/views/splash_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
