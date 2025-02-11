@@ -1,5 +1,5 @@
 import 'package:bookly/core/constant/constants.dart';
-import 'package:bookly/feature/splash/presentation/home/presentation/view/home_view.dart';
+import 'package:bookly/feature/home/presentation/view/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -44,7 +44,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Image.asset(Assets.logo),
+        Image.asset(AssetsData.logo),
         SlidingText(slidingAmimation: slidingAmimation),
       ],
     );
