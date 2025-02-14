@@ -12,7 +12,7 @@ class BestSellerListView extends StatelessWidget {
         padding: EdgeInsets.zero,
         itemBuilder: (context, index) {
           return const Padding(
-            padding: EdgeInsets.symmetric(vertical: 20.0),
+            padding: EdgeInsets.symmetric(vertical: 5.0),
             child: BestSellerListViewItem(),
           );
         });

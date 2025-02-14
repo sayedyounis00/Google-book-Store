@@ -16,7 +16,7 @@ class BestSellerListViewItem extends StatelessWidget {
           const Image(image: AssetImage(AssetsData.testImage)),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.only(left: 8.0),
+              padding: const EdgeInsets.only(left: 16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
