@@ -34,11 +34,8 @@ class BookDetailsViewBody extends StatelessWidget {
                   fontWeight: FontWeight.w500),
             ),
           ),
-          const Row(
+          const BookRating(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              BookRating(),
-            ],
           ),
         ],
       ),
