@@ -4,8 +4,8 @@ import 'package:bookly/feature/home/presentation/view/widgets/book_rating.dart';
 import 'package:bookly/feature/home/presentation/view/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 
-class BestSellerListViewItem extends StatelessWidget {
-  const BestSellerListViewItem({super.key});
+class BooksListViewItem extends StatelessWidget {
+  const BooksListViewItem({super.key});
   @override
   Widget build(BuildContext context) {
     return SizedBox(
