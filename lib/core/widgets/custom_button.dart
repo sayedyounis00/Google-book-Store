@@ -10,7 +10,8 @@ class CustomButton extends StatelessWidget {
       {super.key,
       required this.bGColor,
       required this.textColor,
-      required this.borderRadius, required this.text});
+      required this.borderRadius,
+      required this.text});
 
   @override
   Widget build(BuildContext context) {

@@ -7,7 +7,8 @@ class BestSellerText extends StatelessWidget {
   final TextStyle? textStyle;
   const BestSellerText({
     super.key,
-    required this.text, this.textStyle,
+    required this.text,
+    this.textStyle,
   });
 
   @override
