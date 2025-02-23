@@ -1,5 +1,4 @@
 import 'package:bookly/core/constant/constants.dart';
-import 'package:bookly/core/services/api_services.dart';
 import 'package:bookly/core/utils/app_router.dart';
 import 'package:bookly/core/utils/service_locator.dart';
 import 'package:bookly/feature/home/data/Repo/home_repo_impl.dart';
@@ -24,8 +23,8 @@ class MyApp extends StatelessWidget {
 
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) => FeaturedBooksCubit(getIt.get<HomeRepoImpl>()),
+        BlocProvider(                                                       //! here we make a triget after provide cubit call the function 
+          create: (context) => FeaturedBooksCubit(getIt.get<HomeRepoImpl>())..fetchFeatueBooks(),
         ),
         BlocProvider(
           create: (context) =>
