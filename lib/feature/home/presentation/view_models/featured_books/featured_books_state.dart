@@ -9,7 +9,10 @@ sealed class FeaturedBooksState extends Equatable {
 
 final class FeaturedBooksInitial extends FeaturedBooksState {}
 
-final class FeaturedBooksSuccess extends FeaturedBooksState {}
+final class FeaturedBooksSuccess extends FeaturedBooksState {
+  final List<BookModel> bookModel;
+  const FeaturedBooksSuccess(this.bookModel);
+}
 
 final class FeaturedBooksFailure extends FeaturedBooksState {
   final String errMessage;
