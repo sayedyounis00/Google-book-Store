@@ -18,8 +18,8 @@ class SimillarBooksListView extends StatelessWidget {
               itemCount: 10,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return const CustomBookImage(
-                  imageUrl: " ",
+                return  CustomBookImage(
+                  imageUrl: state.bookModel[index].volumeInfo!.imageLinks!.thumbnail!,
                 );
               },
             ),

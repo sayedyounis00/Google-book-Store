@@ -15,8 +15,8 @@ class BookDetailsView extends StatefulWidget {
 class _BookDetailsViewState extends State<BookDetailsView> {
   @override
   void initState() {
-    BlocProvider.of<SimilarBooksCubit>(context)
-        .fetchSimmilarBooks(category: widget.bookModel.volumeInfo!.categories![0]);
+    BlocProvider.of<SimilarBooksCubit>(context).fetchSimmilarBooks(
+        category: widget.bookModel.volumeInfo!.categories![0]);
     super.initState();
   }
 
@@ -24,13 +24,18 @@ class _BookDetailsViewState extends State<BookDetailsView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: IconButton(
           icon: const Icon(Icons.close),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
         actions: const [Icon(Icons.shopping_cart)],
       ),
-      body: const BookDetailsViewBody(),
+      body:  BookDetailsViewBody(
+        bookModel:widget.bookModel,
+      ),
     );
   }
 }

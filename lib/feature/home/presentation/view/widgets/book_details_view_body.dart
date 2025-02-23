@@ -1,4 +1,5 @@
 import 'package:bookly/core/utils/styles.dart';
+import 'package:bookly/feature/home/data/models/book_model/book_model.dart';
 import 'package:bookly/feature/home/presentation/view/widgets/book_action.dart';
 import 'package:bookly/feature/home/presentation/view/widgets/book_rating.dart';
 import 'package:bookly/feature/home/presentation/view/widgets/custom_book_image.dart';
@@ -6,7 +7,8 @@ import 'package:bookly/feature/home/presentation/view/widgets/simillar_books_lis
 import 'package:flutter/material.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
-  const BookDetailsViewBody({super.key});
+  final BookModel bookModel;
+  const BookDetailsViewBody({super.key, required this.bookModel});
 
   @override
   Widget build(BuildContext context) {
@@ -21,21 +23,21 @@ class BookDetailsViewBody extends StatelessWidget {
               children: [
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: size * 0.15),
-                  child: const CustomBookImage(
-                    imageUrl: " ",
+                  child: CustomBookImage(
+                    imageUrl: bookModel.volumeInfo!.imageLinks!.thumbnail!,
                   ),
                 ),
                 const SizedBox(
                   height: 43,
                 ),
-                const Text(
-                  "The Jungle Book",
+                Text(
+                  bookModel.volumeInfo!.title!,
                   style: Styles.textStyle30,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: Text(
-                    "Elsayed seif",
+                    bookModel.volumeInfo!.authors.toString(),
                     style: Styles.textStyle18.copyWith(
                         color: Colors.grey,
                         fontStyle: FontStyle.italic,
