@@ -1,11 +1,13 @@
-import 'package:bookly/core/utils/assets.dart';
 import 'package:bookly/core/utils/styles.dart';
+import 'package:bookly/feature/home/data/models/book_model/book_model.dart';
 import 'package:bookly/feature/home/presentation/view/widgets/book_rating.dart';
 import 'package:bookly/feature/home/presentation/view/widgets/custom_text.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class BooksListViewItem extends StatelessWidget {
-  const BooksListViewItem({super.key});
+  final BookModel bookModel;
+  const BooksListViewItem({super.key, required this.bookModel});
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -13,7 +15,12 @@ class BooksListViewItem extends StatelessWidget {
       width: double.infinity,
       child: Row(
         children: [
-          const Image(image: AssetImage(AssetsData.testImage)),
+          CachedNetworkImage(
+            fit: BoxFit.fill,
+            imageUrl:
+                bookModel.volumeInfo!.imageLinks!.smallThumbnail.toString(),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
+          ),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.only(left: 16.0),
@@ -22,24 +29,24 @@ class BooksListViewItem extends StatelessWidget {
                 children: [
                   SizedBox(
                     width: MediaQuery.of(context).size.width * .6,
-                    child: const BestSellerText(
-                      text: "Hary Poter and the goblet of fire",
+                    child: BestSellerText(
+                      text: bookModel.volumeInfo!.title!,
                       textStyle: Styles.textStyle30,
                     ),
                   ),
-                  const BestSellerText(
-                    text: "J.k Rowling",
+                  BestSellerText(
+                    text: bookModel.volumeInfo!.authors.toString(),
                     textStyle: Styles.textStyle14,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       BestSellerText(
-                        text: r'19.99 $',
+                        text: "Free",
                         textStyle: Styles.textStyle20
                             .copyWith(fontWeight: FontWeight.bold),
                       ),
-                      const BookRating(),
+                      const BookRating(rating: 5.5, count: 2345),
                     ],
                   )
                 ],

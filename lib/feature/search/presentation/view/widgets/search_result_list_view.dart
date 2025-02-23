@@ -1,3 +1,4 @@
+import 'package:bookly/feature/home/data/models/book_model/book_model.dart';
 import 'package:bookly/feature/home/presentation/view/widgets/best_seller_list_view_item.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,9 @@ class SearchResultListView extends StatelessWidget {
         itemBuilder: (context, index) {
           return const Padding(
             padding: EdgeInsets.symmetric(vertical: 5.0),
-            child: BooksListViewItem(),
+            child: BooksListViewItem(
+              bookModel: BookModel(),
+            ),
           );
         });
   }

@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) =>
               //??\\ here we replace HomeRepoImpl(apiServices: ApiServices()) //!with this!// getIt.get<HomeRepoImpl>()
-              NewestBookCubit(getIt.get<HomeRepoImpl>()),
+              NewestBookCubit(getIt.get<HomeRepoImpl>())..fetchNewestBooks(),
         ),
       ],
       child: MaterialApp.router(
