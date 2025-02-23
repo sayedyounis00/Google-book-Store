@@ -6,4 +6,6 @@ abstract class HomeRepo {
   //here we add return type and agument
   Future<Either<Failure, List<BookModel>>> fetchNewestBook();
   Future<Either<Failure, List<BookModel>>> fetchFeatureBooks();
+  Future<Either<Failure, List<BookModel>>> fetchSimilarBooks(
+      {required String category});
 }
