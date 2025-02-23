@@ -1,3 +1,4 @@
+import 'package:bookly/core/constant/strings.dart';
 import 'package:bookly/core/errors/failure.dart';
 import 'package:bookly/core/services/api_services.dart';
 import 'package:bookly/feature/home/data/Repo/home_repo.dart';
@@ -12,9 +13,7 @@ class HomeRepoImpl implements HomeRepo {
   @override
   Future<Either<Failure, List<BookModel>>> fetchNewestBook() async {
     try {
-      var data = await apiServices.get(
-          endPoint:
-              "Filtering=free-ebooks&q=subject:programming&Sorting=newest");
+      var data = await apiServices.get(endPoint: Strings.endPointforNewest);
       List<BookModel> books = [];
       for (var item in data["items"][0]) {
         books.add(BookModel.fromJson(item));
@@ -29,8 +28,20 @@ class HomeRepoImpl implements HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<BookModel>>> fetchFeatureBooks() {
-    // TODO: implement fetchFeatureBooks
-    throw UnimplementedError();
+  Future<Either<Failure, List<BookModel>>> fetchFeatureBooks() async {
+    try {
+      var data = await apiServices.get(endPoint: Strings.endPointforFeatured);
+      List<BookModel> books = [];
+      for (var item in data["items"][0]) {
+        books.add(BookModel.fromJson(item));
+      }
+      return right(books);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      }
+    
+      return left(ServerFailure(errMessage: e.toString()));
+    }
   }
 }
